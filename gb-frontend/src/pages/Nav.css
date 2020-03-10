@@ -1,0 +1,24 @@
+.Nav {
+  position: absolute;
+  width: 100%;
+  /* margin: 20px; */
+  background-color: #c7c2c2;
+}
+
+h3 {
+  text-align: left;
+  width: 400px;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+}
+
+.Nav-btns {
+  float: right;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+
+.Nav .Nav-btns a {
+  margin: 0 10px;
+}
