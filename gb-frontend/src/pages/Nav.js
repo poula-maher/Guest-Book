@@ -6,7 +6,7 @@ function Nav() {
     <div className="Nav">
       <h3>Guest Book</h3>
       <div className="Nav-btns">
-        <a href="">Signup</a>
+        <a>Signup</a>
         <a>Login</a>
         <a>Logout</a>
       </div>
