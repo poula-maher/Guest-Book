@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import "./Signup.css";
+import "./Login.css";
 
-class Signup extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      name: "",
       password: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -18,20 +17,18 @@ class Signup extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const email = this.state.email;
-    const name = this.state.name;
     const password = this.state.password;
 
     this.setState({
       email: "",
-      name: "",
       password: ""
     });
   }
   render() {
     return (
-      <div className="Signup">
+      <div className="Login">
         <div className="form">
-          <h1>SIGNUP</h1>
+          <h1>Login</h1>
           <form action="" onSubmit={this.handleSubmit}>
             <label htmlFor="email">E-Mail</label>
             <input
@@ -41,14 +38,6 @@ class Signup extends Component {
               onChange={this.handleChange}
               value={this.state.email}
             />
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.name}
-            />
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -57,7 +46,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               value={this.state.password}
             />
-            <button type="submit">Sign Up</button>
+            <button type="submit">Login</button>
           </form>
         </div>
       </div>
@@ -65,4 +54,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Login;
