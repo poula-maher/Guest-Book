@@ -1,5 +1,4 @@
 const getDb = require("../util/database").getDb;
-const db = getDb();
 
 class User {
   constructor(email, name, password) {
@@ -8,6 +7,7 @@ class User {
     this.password = password;
   }
   save() {
+    const db = getDb();
     return db
       .collection("users")
       .insertOne(this)
@@ -20,6 +20,7 @@ class User {
   }
 
   static getUser(email, password) {
+    const db = getDb();
     return db
       .collection("users")
       .findOne({ email: email, password: password })

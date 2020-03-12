@@ -44,8 +44,8 @@ exports.login = (req, res) => {
     const data = parse(body);
     const email = data.email;
     const password = data.password;
-    const user = User.getUser(email, password)
-      .then(result => {
+    User.getUser(email, password)
+      .then(user => {
         res.statusCode = 302;
         res.setHeader("Location", "/");
         res.end();

@@ -1,5 +1,6 @@
-const AuthController = require("../controllers/auth");
 const User = require("../models/User");
+const AuthController = require("../controllers/auth");
+const MessagesController = require("../controllers/messages");
 
 const { parse } = require("querystring");
 
@@ -7,18 +8,19 @@ const routesHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
   if (url === "/") {
-    res.write("<html>");
-    res.write("<head><title>Enter Message</title><head>");
-    res.write(
-      '<body><form action="/signup" method="POST"><input type="text" name="email"><input type="text" name="name"><input type="text" name="password"><button type="submit">Send</button></form></body>'
-    );
-    res.write("</html>");
-    return res.end();
+    MessagesController.getMessages(req, res);
+    // const messages = [
+    //   { text: "sadsad" },
+    //   { text: "sadsad" },
+    //   { text: "sadsad" }
+    // ];
+    // res.setHeader("Content-Type", "application/json");
+    // return res.end(JSON.stringify(messages));
   }
   if (url === "/signup" && method === "POST") {
     AuthController.createUser(req, res);
   }
-  if (url === "/signin" && method === "POST") {
+  if (url === "/login" && method === "POST") {
     AuthController.createUser(req, res);
   }
 };
