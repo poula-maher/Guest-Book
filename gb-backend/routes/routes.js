@@ -9,13 +9,6 @@ const routesHandler = (req, res) => {
   const method = req.method;
   if (url === "/") {
     MessagesController.getMessages(req, res);
-    // const messages = [
-    //   { text: "sadsad" },
-    //   { text: "sadsad" },
-    //   { text: "sadsad" }
-    // ];
-    // res.setHeader("Content-Type", "application/json");
-    // return res.end(JSON.stringify(messages));
   }
   if (url === "/signup" && method === "POST") {
     AuthController.createUser(req, res);
