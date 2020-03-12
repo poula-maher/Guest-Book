@@ -18,6 +18,9 @@ const routesHandler = (req, res) => {
   if (url === "/signup" && method === "POST") {
     AuthController.createUser(req, res);
   }
+  if (url === "/signin" && method === "POST") {
+    AuthController.createUser(req, res);
+  }
 };
 
 module.exports = routesHandler;
