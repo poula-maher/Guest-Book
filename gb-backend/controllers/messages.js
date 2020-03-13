@@ -21,9 +21,10 @@ exports.createMessage = (req, res) => {
     .on("end", () => {
       const data = parse(body);
       const message = data.message;
-      User.getUser();
-      const message = new message(message, userId);
-      message.save();
+      User.getUser().then(user => {});
+      const newMessage = new Message(message, userId);
+
+      newMessage.save();
     })
     .then(result => {
       res.statusCode = 302;

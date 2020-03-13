@@ -1,10 +1,11 @@
 const getDb = require("../util/database").getDb;
 
 class User {
-  constructor(email, name, password) {
+  constructor(email, name, password, messages) {
     this.email = email;
     this.name = name;
     this.password = password;
+    this.messages = messages;
   }
   save() {
     const db = getDb();
