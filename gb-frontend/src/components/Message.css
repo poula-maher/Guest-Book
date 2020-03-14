@@ -1,0 +1,27 @@
+.Message {
+  width: 70%;
+  margin: 1rem 0;
+  border: 1px solid #3b0062;
+  border-radius: 5px;
+  padding: 0.5rem;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.Message-creator {
+  text-align: left;
+  color: #707070;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.Message-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  list-style: none;
+  border: none;
+  padding: 10px;
+  margin: 0 10px;
+}

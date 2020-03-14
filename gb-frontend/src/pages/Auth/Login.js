@@ -15,8 +15,10 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   handleSubmit(e) {
+    e.preventDefault();
     const email = this.state.email;
     const password = this.state.password;
+    console.log(email);
     this.props.handleLogin(email, password);
     this.setState({
       email: "",
@@ -28,7 +30,7 @@ class Login extends Component {
       <div className="Login">
         <div className="form">
           <h1>Login</h1>
-          <form action="" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor="email">E-Mail</label>
             <input
               id="email "

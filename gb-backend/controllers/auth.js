@@ -22,7 +22,7 @@ exports.createUser = (req, res) => {
           res.setHeader("Location", "/");
           return res.end();
         }
-        const user = new User(email, password, name, []);
+        const user = new User(email, name, password, []);
         user.save();
       })
       .then(result => {

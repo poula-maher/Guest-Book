@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
+import Message from "../components/Message";
 
 class Home extends Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class Home extends Component {
     this.setState({ message: e.target.value });
   };
   handleSubmit = e => {
-    e.preventDefault();
     console.log(e);
     const newMessage = this.state.message;
     console.log(newMessage);
@@ -49,11 +49,11 @@ class Home extends Component {
         message: newMessage,
         userId: "5e6a6287ea7b8d4594ba3241"
         // userId: this.props.userId
-      }),
-      headers: {
-        //   Authorization: "Bearer " + this.props.token,
-        "Content-Type": "application/json"
-      }
+      })
+      // headers: {
+      //   //   Authorization: "Bearer " + this.props.token,
+      //   "Content-Type": "application/json"
+      // }
     })
       .then(res => {
         if (res.status !== 200) {
@@ -85,9 +85,11 @@ class Home extends Component {
           </form>
         </div>
         <h1>Messages</h1>
-        {this.state.messages.map(m => {
-          return <li>{m.text}</li>;
-        })}
+        <div className="messages">
+          {this.state.messages.map(m => {
+            return <Message key={m._id} message={m.text} />;
+          })}
+        </div>
       </div>
     );
   }

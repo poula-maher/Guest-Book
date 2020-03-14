@@ -26,6 +26,7 @@ class User {
       .collection("users")
       .findOne({ email: email, password: password })
       .then(user => {
+        console.log("User found");
         console.log(user);
         return user;
       })

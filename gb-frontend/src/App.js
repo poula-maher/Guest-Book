@@ -14,9 +14,6 @@ class App extends Component {
       userId: null,
       token: null
     };
-    // this.handleLogin = this.handleLogin.bind(this)
-    // this.handleLogin = this.handleLogin.bind(this)
-    // this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
@@ -26,7 +23,7 @@ class App extends Component {
       return;
     }
     if (new Date(expiryDate) <= new Date()) {
-      this.logoutHandler();
+      this.handleLogout();
       return;
     }
     const userId = localStorage.getItem("userId");
@@ -36,12 +33,12 @@ class App extends Component {
     this.setAutoLogout(remainingMilliseconds);
   }
 
-  handleSignup(email, name, password) {
+  handleSignup = (email, name, password) => {
     fetch("http://localhost:8080/signup", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      method: "POST",
+      // headers: {
+      //   "Content-Type": "application/json"
+      // },
       body: JSON.stringify({
         email: email,
         name: name,
@@ -71,14 +68,14 @@ class App extends Component {
           isAuth: false
         });
       });
-  }
+  };
 
-  handleLogin(email, password) {
-    fetch("http://locolhost:8080/login", {
+  handleLogin = (email, password) => {
+    fetch("http://localhost:8080/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      // headers: {
+      //   "Content-Type": "application/json"
+      // },
       body: JSON.stringify({
         email: email,
         password: password
@@ -115,13 +112,13 @@ class App extends Component {
           isAuth: false
         });
       });
-  }
+  };
 
-  handleLogout() {
+  handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("expiryDate");
     localStorage.removeItem("userId");
-  }
+  };
 
   setAutoLogout = milliseconds => {
     setTimeout(() => {
