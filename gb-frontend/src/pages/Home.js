@@ -7,7 +7,9 @@ class Home extends Component {
     super(props);
     this.state = {
       messages: [],
-      message: ""
+      message: "",
+      creator: "aaa",
+      userId: "1"
     };
   }
 
@@ -72,22 +74,34 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <div className="form">
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="message"></label>
-            <input
-              id="message "
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.message}
-            />
-            <input type="submit" />
-          </form>
-        </div>
-        <h1>Messages</h1>
+        {this.props.isAuth && (
+          <div className="form">
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="message"></label>
+              <input
+                className="Home-newMsgInput"
+                id="message"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.message}
+                placeholder="ADD NEW MESSAGE"
+              />
+              <button className="Home-newbtn" type="submit">
+                Add New Message
+              </button>
+            </form>
+          </div>
+        )}
         <div className="messages">
           {this.state.messages.map(m => {
-            return <Message key={m._id} message={m.text} />;
+            return (
+              <Message
+                key={m._id}
+                message={m.text}
+                creator={this.state.creator}
+                userId={this.state.userId}
+              />
+            );
           })}
         </div>
       </div>

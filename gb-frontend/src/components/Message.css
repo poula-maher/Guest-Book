@@ -14,14 +14,30 @@
   margin: 0;
 }
 
+.Message-main {
+  display: flex;
+  flex-direction: column;
+}
+h4 {
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+.Message-reply {
+  text-align: left;
+  margin-left: 20px;
+}
+
 .Message-actions {
   display: flex;
   justify-content: flex-end;
 }
 
-button {
-  list-style: none;
+.Message-btn {
+  width: 70px;
+  border-radius: 5px;
   border: none;
-  padding: 10px;
+  padding: 15px;
   margin: 0 10px;
+  cursor: pointer;
 }

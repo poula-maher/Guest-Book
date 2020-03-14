@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Nav.css";
 
 class Nav extends Component {
+  handleClick = () => {
+    this.props.handleLogout();
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div className="Nav">
@@ -9,15 +14,23 @@ class Nav extends Component {
           <h3>Guest Book</h3>
           <div className="Nav-btns">
             <ul>
-              <li>
-                <a href="/signup">Signup</a>
-              </li>
-              <li>
-                <a href="/login">Login</a>
-              </li>
-              <li>
-                <button onClick={this.props.handleLogout}>Logout</button>
-              </li>
+              {!this.props.isAuth && (
+                <>
+                  <li>
+                    <a href="/signup">Signup</a>
+                  </li>
+                  <li>
+                    <a href="/login">Login</a>
+                  </li>
+                </>
+              )}
+              {this.props.isAuth && (
+                <li>
+                  <a className="Nav-logout" onClick={this.handleClick}>
+                    Logout
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -26,4 +39,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

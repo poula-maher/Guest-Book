@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Login.css";
 
 class Login extends Component {
@@ -20,6 +21,7 @@ class Login extends Component {
     const password = this.state.password;
     console.log(email);
     this.props.handleLogin(email, password);
+    this.props.history.push("/");
     this.setState({
       email: "",
       password: ""
@@ -55,4 +57,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

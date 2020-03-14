@@ -2,12 +2,22 @@
   margin-top: 100px;
 }
 
-h1 {
-  margin-top: 0;
-}
-
 .messages {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.Home-newbtn {
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  padding: 15px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.Home-newMsgInput {
+  width: 300px;
+  height: 30px;
 }

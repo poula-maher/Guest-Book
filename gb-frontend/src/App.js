@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Nav from "./pages/Nav";
 import Home from "./pages/Home";
 import Signup from "./pages/Auth/Signup";
@@ -60,7 +60,6 @@ class App extends Component {
       .then(resData => {
         console.log(resData);
         this.setState({ isAuth: false });
-        this.props.history.replace("/");
       })
       .catch(err => {
         console.log(err);
@@ -115,6 +114,7 @@ class App extends Component {
   };
 
   handleLogout = () => {
+    this.setState({ isAuth: false, token: null });
     localStorage.removeItem("token");
     localStorage.removeItem("expiryDate");
     localStorage.removeItem("userId");
@@ -129,17 +129,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav handleLogout={this.handleLogout} />
+        <Nav isAuth={this.state.isAuth} handleLogout={this.handleLogout} />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <Home userId={this.state.userId} />}
+            render={() => (
+              <Home isAuth={this.state.isAuth} userId={this.state.userId} />
+            )}
           />
           <Route
             exact
             path="/login"
-            render={() => <Login handleLogin={this.handleLogin} />}
+            render={props => (
+              <Login {...props} handleLogin={this.handleLogin} />
+            )}
           />
           <Route
             exact
@@ -152,4 +156,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

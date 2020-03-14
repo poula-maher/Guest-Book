@@ -36,6 +36,9 @@ const routesHandler = (req, res) => {
   if (url === "/create-message" && method === "POST") {
     MessagesController.createMessage(req, res);
   }
+  if (url === "/delete-message" && method === "Delete") {
+    // MessagesController.deleteMessage(req, res);
+  }
   if (url === "/signup" && method === "POST") {
     AuthController.createUser(req, res);
   }

@@ -1,4 +1,3 @@
-
 const User = require("../models/User");
 const Message = require("../models/Message");
 exports.getMessages = (req, res) => {

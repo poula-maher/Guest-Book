@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Signup.css";
 
 class Signup extends Component {
@@ -20,6 +21,7 @@ class Signup extends Component {
     const name = this.state.name;
     const password = this.state.password;
     this.props.handleSignup(email, name, password);
+    this.props.history.push("/login");
     this.setState({
       email: "",
       name: "",
@@ -64,4 +66,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);
