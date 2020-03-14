@@ -10,13 +10,13 @@ class Nav extends Component {
           <div className="Nav-btns">
             <ul>
               <li>
-                <a href="">Signup</a>
+                <a href="/signup">Signup</a>
               </li>
               <li>
-                <a href="">Login</a>
+                <a href="/login">Login</a>
               </li>
               <li>
-                <a href="">Logout</a>
+                <button onClick={this.props.handleLogout}>Logout</button>
               </li>
             </ul>
           </div>

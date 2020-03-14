@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-const { parse } = require("querystring");
+// const { parse } = require("querystring");
 const jwt = require("jsonwebtoken");
 
 exports.createUser = (req, res) => {
@@ -10,7 +10,8 @@ exports.createUser = (req, res) => {
     body += chunk.toString();
   });
   req.on("end", () => {
-    const data = parse(body);
+    const data = JSON.parse(body);
+    // console.log(data);
     const email = data.email;
     const name = data.name;
     const password = data.password;
@@ -42,7 +43,7 @@ exports.login = (req, res) => {
     body += chunk.toString();
   });
   req.on("end", () => {
-    const data = parse(body);
+    const data = JSON.parse(body);
     const email = data.email;
     const password = data.password;
     let loadedUser;
