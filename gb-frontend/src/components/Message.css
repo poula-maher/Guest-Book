@@ -34,10 +34,29 @@ h4 {
 }
 
 .Message-btn {
-  width: 70px;
+  width: 80px;
   border-radius: 5px;
   border: none;
   padding: 15px;
   margin: 0 10px;
   cursor: pointer;
+}
+
+.small-btn {
+  text-align: center;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+  padding: 15px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  text-align: left;
+}
+.form-div {
+  width: 100%;
+  align-items: flex-start;
 }

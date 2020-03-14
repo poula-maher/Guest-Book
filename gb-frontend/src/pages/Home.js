@@ -100,6 +100,7 @@ class Home extends Component {
                 message={m.text}
                 creator={this.state.creator}
                 userId={this.state.userId}
+                isAuth={this.props.isAuth}
               />
             );
           })}

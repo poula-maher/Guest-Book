@@ -52,7 +52,7 @@ exports.login = (req, res) => {
         if (!user) {
           res.statusCode = 302;
           res.setHeader("Location", "/");
-          res.end();
+          return res.end();
         }
         loadedUser = user;
         const token = jwt.sign(
