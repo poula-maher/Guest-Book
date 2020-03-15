@@ -8,7 +8,7 @@ class Post extends Component {
     this.state = {
       isEditMode: false,
       isReplyMode: false,
-      replys: [{ text: "asdasd", userId: "id" }]
+      replys: [{ text: "", userId: "" }]
     };
   }
   render() {
