@@ -4,9 +4,10 @@ const mongodb = require("mongodb");
 const ObjectId = mongodb.ObjectId;
 
 class Message {
-  constructor(text, userId, [], _id) {
+  constructor(text, userId, username, [], _id) {
     this.text = text;
     this.userId = userId;
+    this.username = username;
     this.replys = [];
     this._id = _id;
   }

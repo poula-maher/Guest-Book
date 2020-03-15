@@ -22,7 +22,8 @@ exports.createMessage = (req, res) => {
     console.log(data);
     const message = data.message;
     const userId = data.userId;
-    const newMessage = new Message(message, userId);
+    const username = data.username;
+    const newMessage = new Message(message, userId, username, [], null);
     newMessage
       .save()
       .then(result => {

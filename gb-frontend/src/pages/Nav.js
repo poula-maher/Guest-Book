@@ -11,7 +11,9 @@ class Nav extends Component {
     return (
       <div className="Nav">
         <div className="Navbar">
-          <h3>Guest Book</h3>
+          <a href="/" className="title">
+            Guest Book
+          </a>
           <div className="Nav-btns">
             <ul>
               {!this.props.isAuth && (

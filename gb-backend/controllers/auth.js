@@ -55,6 +55,7 @@ exports.login = (req, res) => {
           return res.end();
         }
         loadedUser = user;
+        console.log(loadedUser);
         const token = jwt.sign(
           {
             email: loadedUser.email,
@@ -66,7 +67,11 @@ exports.login = (req, res) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         return res.end(
-          JSON.stringify({ token: token, userId: loadedUser._id.toString() })
+          JSON.stringify({
+            token: token,
+            username: loadedUser.name,
+            userId: loadedUser._id.toString()
+          })
         );
       })
       .catch(err => {

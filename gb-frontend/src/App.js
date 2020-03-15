@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       isAuth: false,
       userId: null,
-      token: null
+      token: null,
+      username: ""
     };
   }
 
@@ -27,9 +28,15 @@ class App extends Component {
       return;
     }
     const userId = localStorage.getItem("userId");
+    const username = localStorage.getItem("username");
     const remainingMilliseconds =
       new Date(expiryDate).getTime() - new Date().getTime();
-    this.setState({ isAuth: true, token: token, userId: userId });
+    this.setState({
+      isAuth: true,
+      token: token,
+      userId: userId,
+      username: username
+    });
     this.setAutoLogout(remainingMilliseconds);
   }
 
@@ -88,14 +95,16 @@ class App extends Component {
         return res.json();
       })
       .then(resData => {
-        console.log(resData);
+        console.log(resData.username);
         this.setState({
           isAuth: true,
           token: resData.token,
-          userId: resData.userId
+          userId: resData.userId,
+          username: resData.username
         });
         localStorage.setItem("token", resData.token);
         localStorage.setItem("userId", resData.userId);
+        localStorage.setItem("username", resData.username);
         const remainingMilliseconds = 60 * 60 * 1000;
         const expiryDate = new Date(
           new Date().getTime() + remainingMilliseconds
@@ -111,7 +120,7 @@ class App extends Component {
   };
 
   handleLogout = () => {
-    this.setState({ isAuth: false, token: null });
+    this.setState({ isAuth: false, token: null, username: "" });
     localStorage.removeItem("token");
     localStorage.removeItem("expiryDate");
     localStorage.removeItem("userId");
@@ -132,7 +141,11 @@ class App extends Component {
             exact
             path="/"
             render={() => (
-              <Home isAuth={this.state.isAuth} userId={this.state.userId} />
+              <Home
+                isAuth={this.state.isAuth}
+                username={this.state.username}
+                userId={this.state.userId}
+              />
             )}
           />
           <Route

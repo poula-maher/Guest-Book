@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Message.css";
+import { uuid } from "uuidv4";
 
 class Post extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ class Post extends Component {
           )}
           <h4>Replys:</h4>
           {this.state.replys.map(r => (
-            <p className="Message-reply">{r.text}</p>
+            <p className="Message-reply" key={uuid()}>
+              {r.text}
+            </p>
           ))}
           {this.state.isReplyMode && this.props.isAuth && (
             <form className="form" onSubmit={this.handleSubmit}>

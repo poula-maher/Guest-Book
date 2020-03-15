@@ -7,9 +7,7 @@ class Home extends Component {
     super(props);
     this.state = {
       messages: [],
-      message: "",
-      creator: "aaa",
-      userId: "1"
+      message: ""
     };
   }
 
@@ -38,7 +36,6 @@ class Home extends Component {
     this.setState({ message: e.target.value });
   };
   handleSubmit = e => {
-    console.log(e);
     const newMessage = this.state.message;
     console.log(newMessage);
     this.setState({
@@ -49,8 +46,8 @@ class Home extends Component {
       method: "POST",
       body: JSON.stringify({
         message: newMessage,
-        userId: "5e6a6287ea7b8d4594ba3241"
-        // userId: this.props.userId
+        userId: this.props.userId,
+        username: this.props.username
       })
       // headers: {
       //   //   Authorization: "Bearer " + this.props.token,
@@ -65,9 +62,6 @@ class Home extends Component {
       })
       .then(resData => {
         console.log(resData);
-        // this.setState({
-        //   messages: resData
-        // });
       })
       .catch(err => console.log(err));
   };
@@ -98,8 +92,8 @@ class Home extends Component {
               <Message
                 key={m._id}
                 message={m.text}
-                creator={this.state.creator}
-                userId={this.state.userId}
+                creator={m.username}
+                userId={this.props.userId}
                 isAuth={this.props.isAuth}
               />
             );
