@@ -1,5 +1,5 @@
 # guest-book
-This a MERN APP that is using react on front end and a REST API using node js and mongodb on the backend without express 
+This is a MERN APP that is using react on front end and a REST API using node js and mongodb on the backend without express 
 
 In this app you can:
 - Create an account 
